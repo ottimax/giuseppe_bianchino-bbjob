@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Sm() {
+export default function Row() {
     return (
         <div>
             
