@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import './style.css'
 
 //IMPORT LAYOUT COMPONENT
 import Layout from './layout/Layout';
