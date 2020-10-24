@@ -1,42 +1,51 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import ImagesGroup from '../component/ImagesGroup';
+import Menu from '../component/Menu';
 
 
 export default function Lg(props) {
 
     const lg = props.lg;
-
-
     let rowKey = 0;
 
 
+    //CREATE COLUMNS
     function createColumn(columns, row) {
         let cl = []
 
+        let colKey = 0;
+
         for (let i = 0; i < columns.length; i++) {
-            if (row.elements[i]) {
+            const flex = columns[i];
+            if (row.elements[i]) {      
                 switch (row.elements[i].key) {
                     case 'imagesgroup':
-                        cl.push(<Col key={row.elements[i].value.idGallery}>
+                        cl.push(<Col key={colKey++} lg={flex} md={flex} sm={flex} xs={flex} className={row.customColumnsClasses}>
                             <ImagesGroup  ImagesGroup={row.elements[i]} />
                         </Col>);
+                        break;
+                    case 'menu':
+                        cl.push(<Col key={colKey++} lg={flex} md={flex} sm={flex} xs={flex} className={row.customColumnsClasses}>
+                            <Menu menu={row.elements[i]} />
+                        </Col>)
                         break;
                     default:
                         break;
                 }
             }
+            else{
+                cl.push(<Col lg={flex} md={flex} sm={flex} xs={flex} key={colKey++}></Col>)
+            }
         }
 
-        console.log(cl)
         return cl;
     }
 
 
-
-
+    //CREATE ROW
     const rowToRender = lg.map(row =>
-            <Row key={rowKey++} className={`row ${row.customRowClasses} ${row.customColumnsClasses}`} >
+            <Row key={rowKey++} className={row.customRowClasses}  >
                 {createColumn(row.responsiveCode.split('-'), row)}
             </Row>
     )

@@ -5,6 +5,8 @@ import './style.css'
 
 //IMPORT LAYOUT COMPONENT
 import Layout from './layout/Layout';
+import { Col, Container, Row } from 'react-bootstrap';
+
 
 function setMeta(homepage) {
   let meta = document.createElement('meta');
@@ -23,7 +25,7 @@ function App() {
 
   async function getHomepage() {
     await Axios.get("https://raw.githubusercontent.com/The-BB-s-Way/frontend-tests/master/homepage.json").
-      then(res => {setHomepage(res.data); setMeta(res.data);}).
+      then(res => { setHomepage(res.data); setMeta(res.data); }).
       catch(err => console.error(err));
   }
 
@@ -32,9 +34,9 @@ function App() {
   }, []);
 
   return (
-    <div >
+    <Container fluid className="app-container">
       {homepage && (<Layout lg={homepage.pageStructure.layout.lg}></Layout>)}
-    </div>
+    </Container>
   );
 }
 
