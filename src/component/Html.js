@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Html() {
+export default function Html(props) {
+
+    const html = props.html
+
     return (
-        <div>
-            
-        </div>
+        <div dangerouslySetInnerHTML = {{__html: html.value.content}} />
     )
 }

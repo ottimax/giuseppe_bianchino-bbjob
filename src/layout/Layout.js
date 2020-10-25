@@ -1,7 +1,13 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
+
+
+//IMPORT COMPONENT
+import Html from '../component/Html';
 import ImagesGroup from '../component/ImagesGroup';
 import Menu from '../component/Menu';
+import Text from '../component/Text';
+import Video from '../component/Video';
 
 
 export default function Lg(props) {
@@ -18,11 +24,11 @@ export default function Lg(props) {
 
         for (let i = 0; i < columns.length; i++) {
             const flex = columns[i];
-            if (row.elements[i]) {      
+            if (row.elements[i]) {
                 switch (row.elements[i].key) {
                     case 'imagesgroup':
                         cl.push(<Col key={colKey++} lg={flex} md={flex} sm={flex} xs={flex} className={row.customColumnsClasses}>
-                            <ImagesGroup  ImagesGroup={row.elements[i]} />
+                            <ImagesGroup ImagesGroup={row.elements[i]} />
                         </Col>);
                         break;
                     case 'menu':
@@ -30,11 +36,26 @@ export default function Lg(props) {
                             <Menu menu={row.elements[i]} />
                         </Col>)
                         break;
+                    case 'html':
+                        cl.push(<Col key={colKey++} lg={flex} md={flex} sm={flex} xs={flex} className={row.customColumnsClasses}>
+                            <Html html={row.elements[i]} />
+                        </Col>)
+                        break;
+                    case 'text':
+                        cl.push(<Col key={colKey++} lg={flex} md={flex} sm={flex} xs={flex} className={row.customColumnsClasses}>
+                            <Text text={row.elements[i]} />
+                        </Col>)
+                        break;
+                    case 'video':
+                        cl.push(<Col key={colKey++} lg={flex} md={flex} sm={flex} xs={flex} className={row.customColumnsClasses}>
+                            <Video video={row.elements[i]} />
+                        </Col>)
+                        break;
                     default:
                         break;
                 }
             }
-            else{
+            else {
                 cl.push(<Col lg={flex} md={flex} sm={flex} xs={flex} key={colKey++}></Col>)
             }
         }
@@ -45,9 +66,9 @@ export default function Lg(props) {
 
     //CREATE ROW
     const rowToRender = lg.map(row =>
-            <Row key={rowKey++} className={row.customRowClasses}  >
-                {createColumn(row.responsiveCode.split('-'), row)}
-            </Row>
+        <Row key={rowKey++} className={row.customRowClasses}  >
+            {createColumn(row.responsiveCode.split('-'), row)}
+        </Row>
     )
 
     return (

@@ -14,14 +14,13 @@ export default function ImagesGroup(props) {
     if (imagesGroup.value.type === 'gallery') {
         imagesGroupToRender = (
             imagesGroup.imagesgroup.images.map(img =>
-                <div key={img.idImage} >
+                <Col key={img.idImage} >
                     <img
                         className={imagesGroup.value.settings.extendClassesToImages ? imagesGroup.value.settings.customClasses : ""}
-                        src={img.url}
-                        style={imagesGroup.value.settings.inlineStyle ? JSON.parse(imagesGroup.value.settings.inlineStyle) : {}} />
+                        src={img.url} />
                     <h3>{img.title}</h3>
                     <h6>{img.description}</h6>
-                </div>
+                </Col>
             )
 
         )
@@ -37,29 +36,28 @@ export default function ImagesGroup(props) {
         }
 
         imagesGroupToRender = (
-            <div className="slideshow-div">
+            <Col className="slideshow-div">
                 <Slide>
                     {imagesGroup.imagesgroup.images.map(img =>
                         <div className="each-slide" key={img.idImage}>
                             <div>
                                 <img
                                     className={imagesGroup.value.settings.extendClassesToImages ? imagesGroup.value.settings.customClasses : ""}
-                                    src={img.url}
-                                    style={imagesGroup.value.settings.inlineStyle ? JSON.parse(imagesGroup.value.settings.inlineStyle) : {}} />
+                                    src={img.url} />
                                 <h3>{img.title}</h3>
                                 <h6>{img.description}</h6>
                             </div>
                         </div>
                     )}
                 </Slide>
-            </div>
+            </Col>
         )
     }
 
     return (
-        <div>
+        <Row>
             {imagesGroupToRender}
-        </div>
+        </Row>
 
     )
 }

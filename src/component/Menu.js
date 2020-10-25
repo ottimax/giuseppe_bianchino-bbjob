@@ -28,17 +28,17 @@ export default function Menu(props) {
 
 
     const itemsToRender = menu.value.menu.items.map(item =>
-        <Col key={item.id}>
+        <div key={item.id}>
             {createMenu(item)}
-        </Col>
+        </div>
     )
 
 
 
 
     return (
-        <Row className={menu.value.settings.customClasses} style={menu.value.settings.inlineStyle ? menu.value.settings.inlineStyle : {}}>
+        <div className={menu.value.settings.customClasses}>
             {itemsToRender}
-        </Row>
+        </div>
     )
 }

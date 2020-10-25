@@ -37,6 +37,7 @@ function App() {
     <Container fluid className="app-container">
       {homepage && (<Layout lg={homepage.pageStructure.layout.lg}></Layout>)}
     </Container>
+
   );
 }
 
